@@ -1,6 +1,6 @@
 # latest_torch
 
-Metapackages to make installing torch easier
+Metapackage to make installing latest torch easier
 
 Not tested on mac and linux.
 
