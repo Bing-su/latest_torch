@@ -56,7 +56,7 @@ url_base = "https://download.pytorch.org/whl"
 raw_html: str = urlopen(f"{url_base}/torch_stable.html").read().decode("utf-8")
 all_wheel = []
 for line in raw_html.splitlines():
-    wheel = re.search(r">([^>]+)</a>", line)
+    wheel = re.search(r">([^><]+)</a>", line)
     if not wheel:
         continue
 
@@ -95,6 +95,9 @@ current_pyver = "cp" + "".join(platform.python_version_tuple()[:2])
 backend = os.getenv("LATEST_TORCH_BACKEND", "cuda").lower()
 if backend == "cuda":
     backend = "cu"
+
+if system.lower() == "darwin" or machine.lower() == "aarch64":
+    backend = "cpu"
 
 if backend in ("cu", "rocm"):
     all_backends = {
