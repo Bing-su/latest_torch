@@ -1,7 +1,7 @@
 [project]
 name = "latest_torch"
-description = ""
-version = "0.1.0"
+description = "pip install latest_torch"
+version = "0.1.1"
 authors = [
     {name = "Bingsu",email = "ks2515@naver.com"},
 ]
@@ -15,7 +15,7 @@ dynamic = ["dependencies", "optional-dependencies"]
 repository = "https://github.com/Bing-su/latest_torch"
 
 [build-system]
-requires = ["setuptools>=68.0.0"]
+requires = ["setuptools>=68.0.0,<69"]
 build-backend = "setuptools.build_meta"
 
 [tool.ruff]
