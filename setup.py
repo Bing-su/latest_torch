@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import platform
 import re
@@ -92,12 +94,16 @@ for line in raw_html.splitlines():
 
 # Filter wheel
 current_pyver = "cp" + "".join(platform.python_version_tuple()[:2])
-backend = os.getenv("LATEST_TORCH_BACKEND", "cuda").lower()
+backend = os.getenv("LATEST_TORCH_BACKEND", "").lower()
+
+if not backend:
+    if system.lower() == "darwin" or machine.lower() == "aarch64":
+        backend = "cpu"
+    else:
+        backend = "cu"
+
 if backend == "cuda":
     backend = "cu"
-
-if system.lower() == "darwin" or machine.lower() == "aarch64":
-    backend = "cpu"
 
 if backend in ("cu", "rocm"):
     all_backends = {
