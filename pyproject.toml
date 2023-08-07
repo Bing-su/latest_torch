@@ -1,7 +1,7 @@
 [project]
 name = "latest_torch"
 description = "pip install latest_torch"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
     {name = "Bingsu",email = "ks2515@naver.com"},
 ]

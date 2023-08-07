@@ -165,8 +165,14 @@ if torchaudio_wheels:
         name="torchaudio", url=torchaudio_wheel.url
     )
 
-
-setup(
-    install_requires=install_requires,
-    extras_require=extras_require,
-)
+# Sdist only
+if "LATEST_TORCH_SDIST" in os.environ:
+    setup(
+        install_requires=["torch"],
+        extras_require={"torchvision": "torchvision", "torchaudio": "torchaudio"},
+    )
+else:
+    setup(
+        install_requires=install_requires,
+        extras_require=extras_require,
+    )
