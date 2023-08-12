@@ -7,6 +7,7 @@ Not tested on mac and linux.
 ## Usage
 
 ```sh
+pip install --no-deps latest_torch
 pip install latest_torch
 ```
 
